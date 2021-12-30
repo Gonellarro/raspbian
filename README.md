@@ -186,5 +186,68 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
 9. Per accedir al dashboard d'AdGuard, s'hi accedeix amb un navegador a la IP de la rasp:8082
    ![img](https://cdn.adguard.com/public/Adguard/Blog/AGHome/dashboard.jpg)
 
+## Instal·lació de WireGuard Home en docker
 
+1. Instal·larem AdGuard en una carpeta anomenada adguard. Recomano posar-la dins la carpeta compartida (shared), per poder accedir des de qualsevol ordinador
+
+   ```bash
+   mkdir wireguard
+   ```
+
+2. Dins la carpeta, cream el fitxer de docker-compose:
+
+   ```bash
+   nano docker-compose.yml
+   ```
+
+   ```yaml
+   version: "2.1"
+   services:
+     wireguard:
+       image: lscr.io/linuxserver/wireguard
+       container_name: wireguard
+       cap_add:
+         - NET_ADMIN
+         - SYS_MODULE
+       environment:
+         - PUID=1000
+         - PGID=1000
+         - TZ=Europe/Madrid
+         - SERVERURL=gonella.duckdns.org
+         - SERVERPORT=51820 #optional
+         - PEERS=papa, mama, marti #optional
+         - PEERDNS=1.1.1.1 #optional
+         - INTERNAL_SUBNET=10.13.13.0 #optional
+       volumes:
+         - ./config:/config
+         - /lib/modules:/lib/modules
+       ports:
+         - 51820:51820/udp
+       sysctls:
+         - net.ipv4.conf.all.src_valid_mark=1
+       restart: unless-stopped
+   ```
+
+   Guardam amb Ctrl-X, deim Y
+
+3. Aixecam docker-compose:
+
+   ```bash
+   sudo docker-compose up -d
+   ```
+
+4. Hem de capturar el QR dels clients (peers) que volem que es connectin:
+
+   ```bash
+   docker exec -it wireguard /app/show-peer papa mama marti
+   ```
+
+5. Descarregar el programa [WireGuard](https://play.google.com/store/apps/details?id=com.wireguard.android&hl=es&gl=US) de la Play Store
+
+6. Obrir el programa i afegir una nova connexió VPN amb el "+"
+   ![How to configure a WireGuard Android VPN Client - Server Side Up](https://serversideup.net/wp-content/uploads/2020/05/Wireguard-AndroidClient-Add-512x1024.png)
+
+7. Escanejar codi QR
+
+8. Ara ja està tot configurat a la raspberry. Ara queda obrir el port 51820 al router cap a la IP de la raspberry
 
