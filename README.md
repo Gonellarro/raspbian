@@ -131,3 +131,60 @@ Font: https://pimylifeup.com/raspberry-pi-samba/
 https://pumpingco.de/blog/setup-your-raspberry-pi-for-docker-and-docker-compose/
 
 https://phoenixnap.com/kb/docker-on-raspberry-pi
+
+## Instal·lació de AdGuard Home en docker
+
+1. Instal·larem AdGuard en una carpeta anomenada adguard. Recomano posar-la dins la carpeta compartida (shared), per poder accedir des de qualsevol ordinador
+
+   ```bash
+   mkdir adguard
+   ```
+
+2. Dins la carpeta, cream el fitxer de docker-compose:
+
+   ```bash
+   nano docker-compose.yml
+   ```
+
+   ```yaml
+   version: "3.3"
+   services:
+     adguardhome:
+       image: adguard/adguardhome
+       container_name: adguardhome
+       ports:
+         - 3000:3000/tcp
+         - 8082:80/tcp
+         - 53:53/tcp
+       volumes:
+         - ./work:/opt/adguardhome/work
+         - ./conf:/opt/adguardhome/conf
+       restart: unless-stopped
+   ```
+
+   Guardam amb Ctrl-X, deim Y
+
+3. Engegam docker-compose:
+
+   ```bash
+   sudo docker-compose up -d
+   ```
+
+4. Anam amb un navegador a la direcció de la rasp:3000
+   ![/2021/08/setting-up-adguard-home/adguard-initial.jpg](https://blog.thatopsguy.com/2021/08/setting-up-adguard-home/adguard-initial.jpg)
+
+5. En el moment en que ens demana quin port hem de fer servir, canviar el 80 pel 8082
+   ![/2021/08/setting-up-adguard-home/adguard1.png](https://blog.thatopsguy.com/2021/08/setting-up-adguard-home/adguard1.png)
+
+6. Introduir l'usuari/contrasenya
+   ![/2021/08/setting-up-adguard-home/adguard-create-admin-user.png](https://blog.thatopsguy.com/2021/08/setting-up-adguard-home/adguard-create-admin-user.png)
+
+7. I ja ha acabat la configuració al AdGuard
+
+8. Canviar al router el DNS, posant-hi la IP de la raspberry
+
+9. Per accedir al dashboard d'AdGuard, s'hi accedeix amb un navegador a la IP de la rasp:8082
+   ![img](https://cdn.adguard.com/public/Adguard/Blog/AGHome/dashboard.jpg)
+
+
+
