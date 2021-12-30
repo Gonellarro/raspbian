@@ -164,7 +164,7 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
 
    Guardam amb Ctrl-X, deim Y
 
-3. Engegam docker-compose:
+3. Aixecam docker-compose:
 
    ```bash
    sudo docker-compose up -d
@@ -194,7 +194,7 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
    mkdir wireguard
    ```
 
-2. Dins la carpeta, cream el fitxer de docker-compose:
+2. Dins la carpeta, cream el fitxer de docker-compose (abans hem de tenir una URL amb duckdns):
 
    ```bash
    nano docker-compose.yml
