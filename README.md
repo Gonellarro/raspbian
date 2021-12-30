@@ -245,7 +245,6 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
 5. Descarregar el programa [WireGuard](https://play.google.com/store/apps/details?id=com.wireguard.android&hl=es&gl=US) de la Play Store
 
 6. Obrir el programa i afegir una nova connexió VPN amb el "+"
-   ![How to configure a WireGuard Android VPN Client - Server Side Up](https://serversideup.net/wp-content/uploads/2020/05/Wireguard-AndroidClient-Add-512x1024.png)
 
 7. Escanejar codi QR
 
