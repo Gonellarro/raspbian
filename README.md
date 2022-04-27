@@ -101,7 +101,7 @@ Font: https://pimylifeup.com/raspberry-pi-samba/
 4. Executar el contenidor "Hello World"
 
    ```bash
-   docker run hello-world
+   sudo docker run hello-world
    ```
 
 5. Instal·lam docker compose. Docker-Compose normalment s'instal·la mitjançant pip3. Per això, hem de tenir instal·lats python3 i pip3. Si no el tenim instal·lat, hem d'executar les ordres següents:
