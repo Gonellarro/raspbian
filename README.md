@@ -267,12 +267,6 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
    ```bash
    sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
    ```
-Algunes de les coses importants que fem aquí són:
-
-- Definir primer els ports als quals volem que tingui accés Portainer. En el nostre cas, aquest serà el port 9000.
-- Assignar a aquest contenidor docker el nom de "portainer" perquè puguem identificar-lo ràpidament si mai ho necessitem.
-- Indicar al gestor de Docker que volem que reiniciï aquest Docker si mai està fora de línia sense voler.
-
 3. Accedim a portainer via web mitjançant l'adreça ip de la rapsberry al port 9000
 4. El primer que ens demanarà és crear un usuari/contrasenya
 5. Indicam que volem comencçar
