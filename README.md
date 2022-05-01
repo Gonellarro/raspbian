@@ -156,6 +156,10 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
          - 3000:3000/tcp
          - 8082:80/tcp
          - 53:53/tcp
+         - 53:53/udp
+         - 67:67/udp
+         - 8068:68/tcp
+         - 8068:68/udp
        volumes:
          - ./work:/opt/adguardhome/work
          - ./conf:/opt/adguardhome/conf
