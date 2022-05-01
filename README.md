@@ -256,15 +256,13 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
 
 ## Instal·lació de Portainer en docker
 
-1. Instal·larem Portainer mitjançant una comanda de docker i quedarà corrent per sempre
-2. 
+1. Ens davallam la imatge de portainer, en concret la versió ce
+
    ```bash
    sudo docker pull portainer/portainer-ce:latest
    ```
    
-Aquesta comanda baixa la imatge de Docker a la raspberry, la qual cosa ens permetrà executar-la.
-
-3. Un cop Docker acabi de descarregar la imatge de Portainer la Raspberry Pi, ara la podem executar.
+2. Un cop Docker acabi de descarregar la imatge de Portainer la Raspberry Pi, ara la podem executar.
 
 
    ```bash
