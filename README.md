@@ -254,3 +254,26 @@ https://phoenixnap.com/kb/docker-on-raspberry-pi
 
 8. Ara ja està tot configurat a la raspberry. Ara queda obrir el port 51820 al router cap a la IP de la raspberry
 
+## Instal·lació de Portainer en docker
+
+1. Instal·larem Portainer mitjançant una comanda de docker i quedarà corrent per sempre
+2. 
+   ```bash
+   sudo docker pull portainer/portainer-ce:latest
+   ```
+   
+Aquesta comanda baixa la imatge de Docker a la raspberry, la qual cosa ens permetrà executar-la.
+
+3. Un cop Docker acabi de descarregar la imatge de Portainer la Raspberry Pi, ara la podem executar.
+
+
+   ```bash
+   sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+   ```
+Algunes de les coses importants que fem aquí és definir primer els ports als quals volem que tingui accés Portainer. En el nostre cas, aquest serà el port 9000.
+
+Assignem a aquest contenidor docker el nom de "portainer" perquè puguem identificar-lo ràpidament si mai ho necessitem.
+
+A més, també diem al gestor de Docker que volem que reiniciï aquest Docker si mai està fora de línia sense voler.
+
+Accedim a portainer via web pel port 9000
