@@ -277,3 +277,5 @@ Algunes de les coses importants que fem aquí són:
 4. El primer que ens demanarà és crear un usuari/contrasenya
 5. Indicam que volem comencçar
 6. Ja tenim accés al dashboard
+
+Font: https://pimylifeup.com/raspberry-pi-portainer/
